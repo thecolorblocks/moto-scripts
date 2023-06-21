@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Moto Scripts</title>
+  <style>
+    [data-hex="00"]:before { content: "\1B000"; }
+    [data-hex="01"]:before { content: "\1B001"; }
+    [data-hex="02"]:before { content: "\1B002"; }
+    [data-hex="03"]:before { content: "\1B003"; }
+    [data-hex="04"]:before { content: "\1B004"; }
+    [data-hex="05"]:before { content: "\1B005"; }
+    [data-hex="06"]:before { content: "\1B006"; }
+    [data-hex="07"]:before { content: "\1B007"; }
+    [data-hex="08"]:before { content: "\1B008"; }
+    [data-hex="09"]:before { content: "\1B009"; }
+    [data-hex="0a"]:before { content: "\1B00a"; }
+    [data-hex="0b"]:before { content: "\1B00b"; }
+    [data-hex="0c"]:before { content: "\1B00c"; }
+    [data-hex="0d"]:before { content: "\1B00d"; }
+    [data-hex="0e"]:before { content: "\1B00e"; }
+    [data-hex="0f"]:before { content: "\1B00f"; }
+    [data-hex="10"]:before { content: "\1B010"; }
+    [data-hex="11"]:before { content: "\1B011"; }
+    [data-hex="12"]:before { content: "\1B012"; }
+    [data-hex="13"]:before { content: "\1B013"; }
+    [data-hex="14"]:before { content: "\1B014"; }
+    [data-hex="15"]:before { content: "\1B015"; }
+    [data-hex="16"]:before { content: "\1B016"; }
+    [data-hex="17"]:before { content: "\1B017"; }
+    [data-hex="18"]:before { content: "\1B018"; }
+    [data-hex="19"]:before { content: "\1B019"; }
+    [data-hex="1a"]:before { content: "\1B01a"; }
+    [data-hex="1b"]:before { content: "\1B01b"; }
+    [data-hex="1c"]:before { content: "\1B01c"; }
+    [data-hex="1d"]:before { content: "\1B01d"; }
+    [data-hex="1e"]:before { content: "\1B01e"; }
+    [data-hex="1f"]:before { content: "\1B01f"; }
+    [data-hex="20"]:before { content: "\1B020"; }
+    [data-hex="21"]:before { content: "\1B021"; }
+    [data-hex="22"]:before { content: "\1B022"; }
+    [data-hex="23"]:before { content: "\1B023"; }
+    [data-hex="24"]:before { content: "\1B024"; }
+    [data-hex="25"]:before { content: "\1B025"; }
+    [data-hex="26"]:before { content: "\1B026"; }
+    [data-hex="27"]:before { content: "\1B027"; }
+    [data-hex="28"]:before { content: "\1B028"; }
+    [data-hex="29"]:before { content: "\1B029"; }
+    [data-hex="2a"]:before { content: "\1B02a"; }
+    [data-hex="2b"]:before { content: "\1B02b"; }
+    [data-hex="2c"]:before { content: "\1B02c"; }
+    [data-hex="2d"]:before { content: "\1B02d"; }
+    [data-hex="2e"]:before { content: "\1B02e"; }
+    [data-hex="2f"]:before { content: "\1B02f"; }
+    [data-hex="30"]:before { content: "\1B030"; }
+    [data-hex="31"]:before { content: "\1B031"; }
+    [data-hex="32"]:before { content: "\1B032"; }
+    [data-hex="33"]:before { content: "\1B033"; }
+    [data-hex="34"]:before { content: "\1B034"; }
+    [data-hex="35"]:before { content: "\1B035"; }
+    [data-hex="36"]:before { content: "\1B036"; }
+    [data-hex="37"]:before { content: "\1B037"; }
+    [data-hex="38"]:before { content: "\1B038"; }
+    [data-hex="39"]:before { content: "\1B039"; }
+    [data-hex="3a"]:before { content: "\1B03a"; }
+    [data-hex="3b"]:before { content: "\1B03b"; }
+    [data-hex="3c"]:before { content: "\1B03c"; }
+    [data-hex="3d"]:before { content: "\1B03d"; }
+    [data-hex="3e"]:before { content: "\1B03e"; }
+    [data-hex="3f"]:before { content: "\1B03f"; }
+    [data-hex="40"]:before { content: "\1B040"; }
+    [data-hex="41"]:before { content: "\1B041"; }
+    [data-hex="42"]:before { content: "\1B042"; }
+    [data-hex="43"]:before { content: "\1B043"; }
+    [data-hex="44"]:before { content: "\1B044"; }
+    [data-hex="45"]:before { content: "\1B045"; }
+    [data-hex="46"]:before { content: "\1B046"; }
+    [data-hex="47"]:before { content: "\1B047"; }
+    [data-hex="48"]:before { content: "\1B048"; }
+    [data-hex="49"]:before { content: "\1B049"; }
+    [data-hex="4a"]:before { content: "\1B04a"; }
+    [data-hex="4b"]:before { content: "\1B04b"; }
+    [data-hex="4c"]:before { content: "\1B04c"; }
+    [data-hex="4d"]:before { content: "\1B04d"; }
+    [data-hex="4e"]:before { content: "\1B04e"; }
+    [data-hex="4f"]:before { content: "\1B04f"; }
+    [data-hex="50"]:before { content: "\1B050"; }
+    [data-hex="51"]:before { content: "\1B051"; }
+    [data-hex="52"]:before { content: "\1B052"; }
+    [data-hex="53"]:before { content: "\1B053"; }
+    [data-hex="54"]:before { content: "\1B054"; }
+    [data-hex="55"]:before { content: "\1B055"; }
+    [data-hex="56"]:before { content: "\1B056"; }
+    [data-hex="57"]:before { content: "\1B057"; }
+    [data-hex="58"]:before { content: "\1B058"; }
+    [data-hex="59"]:before { content: "\1B059"; }
+    [data-hex="5a"]:before { content: "\1B05a"; }
+    [data-hex="5b"]:before { content: "\1B05b"; }
+    [data-hex="5c"]:before { content: "\1B05c"; }
+    [data-hex="5d"]:before { content: "\1B05d"; }
+    [data-hex="5e"]:before { content: "\1B05e"; }
+    [data-hex="5f"]:before { content: "\1B05f"; }
+    [data-hex="60"]:before { content: "\1B060"; }
+    [data-hex="61"]:before { content: "\1B061"; }
+    [data-hex="62"]:before { content: "\1B062"; }
+    [data-hex="63"]:before { content: "\1B063"; }
+    [data-hex="64"]:before { content: "\1B064"; }
+    [data-hex="65"]:before { content: "\1B065"; }
+    [data-hex="66"]:before { content: "\1B066"; }
+    [data-hex="67"]:before { content: "\1B067"; }
+    [data-hex="68"]:before { content: "\1B068"; }
+    [data-hex="69"]:before { content: "\1B069"; }
+    [data-hex="6a"]:before { content: "\1B06a"; }
+    [data-hex="6b"]:before { content: "\1B06b"; }
+    [data-hex="6c"]:before { content: "\1B06c"; }
+    [data-hex="6d"]:before { content: "\1B06d"; }
+    [data-hex="6e"]:before { content: "\1B06e"; }
+    [data-hex="6f"]:before { content: "\1B06f"; }
+    [data-hex="70"]:before { content: "\1B070"; }
+    [data-hex="71"]:before { content: "\1B071"; }
+    [data-hex="72"]:before { content: "\1B072"; }
+    [data-hex="73"]:before { content: "\1B073"; }
+    [data-hex="74"]:before { content: "\1B074"; }
+    [data-hex="75"]:before { content: "\1B075"; }
+    [data-hex="76"]:before { content: "\1B076"; }
+    [data-hex="77"]:before { content: "\1B077"; }
+    [data-hex="78"]:before { content: "\1B078"; }
+    [data-hex="79"]:before { content: "\1B079"; }
+    [data-hex="7a"]:before { content: "\1B07a"; }
+    [data-hex="7b"]:before { content: "\1B07b"; }
+    [data-hex="7c"]:before { content: "\1B07c"; }
+    [data-hex="7d"]:before { content: "\1B07d"; }
+    [data-hex="7e"]:before { content: "\1B07e"; }
+    [data-hex="7f"]:before { content: "\1B07f"; }
+    [data-hex="80"]:before { content: "\1B080"; }
+    [data-hex="81"]:before { content: "\1B081"; }
+    [data-hex="82"]:before { content: "\1B082"; }
+    [data-hex="83"]:before { content: "\1B083"; }
+    [data-hex="84"]:before { content: "\1B084"; }
+    [data-hex="85"]:before { content: "\1B085"; }
+    [data-hex="86"]:before { content: "\1B086"; }
+    [data-hex="87"]:before { content: "\1B087"; }
+    [data-hex="88"]:before { content: "\1B088"; }
+    [data-hex="89"]:before { content: "\1B089"; }
+    [data-hex="8a"]:before { content: "\1B08a"; }
+    [data-hex="8b"]:before { content: "\1B08b"; }
+    [data-hex="8c"]:before { content: "\1B08c"; }
+    [data-hex="8d"]:before { content: "\1B08d"; }
+    [data-hex="8e"]:before { content: "\1B08e"; }
+    [data-hex="8f"]:before { content: "\1B08f"; }
+    [data-hex="90"]:before { content: "\1B090"; }
+    [data-hex="91"]:before { content: "\1B091"; }
+    [data-hex="92"]:before { content: "\1B092"; }
+    [data-hex="93"]:before { content: "\1B093"; }
+    [data-hex="94"]:before { content: "\1B094"; }
+    [data-hex="95"]:before { content: "\1B095"; }
+    [data-hex="96"]:before { content: "\1B096"; }
+    [data-hex="97"]:before { content: "\1B097"; }
+    [data-hex="98"]:before { content: "\1B098"; }
+    [data-hex="99"]:before { content: "\1B099"; }
+    [data-hex="9a"]:before { content: "\1B09a"; }
+    [data-hex="9b"]:before { content: "\1B09b"; }
+    [data-hex="9c"]:before { content: "\1B09c"; }
+    [data-hex="9d"]:before { content: "\1B09d"; }
+    [data-hex="9e"]:before { content: "\1B09e"; }
+    [data-hex="9f"]:before { content: "\1B09f"; }
+    [data-hex="a0"]:before { content: "\1B0a0"; }
+    [data-hex="a1"]:before { content: "\1B0a1"; }
+    [data-hex="a2"]:before { content: "\1B0a2"; }
+    [data-hex="a3"]:before { content: "\1B0a3"; }
+    [data-hex="a4"]:before { content: "\1B0a4"; }
+    [data-hex="a5"]:before { content: "\1B0a5"; }
+    [data-hex="a6"]:before { content: "\1B0a6"; }
+    [data-hex="a7"]:before { content: "\1B0a7"; }
+    [data-hex="a8"]:before { content: "\1B0a8"; }
+    [data-hex="a9"]:before { content: "\1B0a9"; }
+    [data-hex="aa"]:before { content: "\1B0aa"; }
+    [data-hex="ab"]:before { content: "\1B0ab"; }
+    [data-hex="ac"]:before { content: "\1B0ac"; }
+    [data-hex="ad"]:before { content: "\1B0ad"; }
+    [data-hex="ae"]:before { content: "\1B0ae"; }
+    [data-hex="af"]:before { content: "\1B0af"; }
+    [data-hex="b0"]:before { content: "\1B0b0"; }
+    [data-hex="b1"]:before { content: "\1B0b1"; }
+    [data-hex="b2"]:before { content: "\1B0b2"; }
+    [data-hex="b3"]:before { content: "\1B0b3"; }
+    [data-hex="b4"]:before { content: "\1B0b4"; }
+    [data-hex="b5"]:before { content: "\1B0b5"; }
+    [data-hex="b6"]:before { content: "\1B0b6"; }
+    [data-hex="b7"]:before { content: "\1B0b7"; }
+    [data-hex="b8"]:before { content: "\1B0b8"; }
+    [data-hex="b9"]:before { content: "\1B0b9"; }
+    [data-hex="ba"]:before { content: "\1B0ba"; }
+    [data-hex="bb"]:before { content: "\1B0bb"; }
+    [data-hex="bc"]:before { content: "\1B0bc"; }
+    [data-hex="bd"]:before { content: "\1B0bd"; }
+    [data-hex="be"]:before { content: "\1B0be"; }
+    [data-hex="bf"]:before { content: "\1B0bf"; }
+    [data-hex="c0"]:before { content: "\1B0c0"; }
+    [data-hex="c1"]:before { content: "\1B0c1"; }
+    [data-hex="c2"]:before { content: "\1B0c2"; }
+    [data-hex="c3"]:before { content: "\1B0c3"; }
+    [data-hex="c4"]:before { content: "\1B0c4"; }
+    [data-hex="c5"]:before { content: "\1B0c5"; }
+    [data-hex="c6"]:before { content: "\1B0c6"; }
+    [data-hex="c7"]:before { content: "\1B0c7"; }
+    [data-hex="c8"]:before { content: "\1B0c8"; }
+    [data-hex="c9"]:before { content: "\1B0c9"; }
+    [data-hex="ca"]:before { content: "\1B0ca"; }
+    [data-hex="cb"]:before { content: "\1B0cb"; }
+    [data-hex="cc"]:before { content: "\1B0cc"; }
+    [data-hex="cd"]:before { content: "\1B0cd"; }
+    [data-hex="ce"]:before { content: "\1B0ce"; }
+    [data-hex="cf"]:before { content: "\1B0cf"; }
+    [data-hex="d0"]:before { content: "\1B0d0"; }
+    [data-hex="d1"]:before { content: "\1B0d1"; }
+    [data-hex="d2"]:before { content: "\1B0d2"; }
+    [data-hex="d3"]:before { content: "\1B0d3"; }
+    [data-hex="d4"]:before { content: "\1B0d4"; }
+    [data-hex="d5"]:before { content: "\1B0d5"; }
+    [data-hex="d6"]:before { content: "\1B0d6"; }
+    [data-hex="d7"]:before { content: "\1B0d7"; }
+    [data-hex="d8"]:before { content: "\1B0d8"; }
+    [data-hex="d9"]:before { content: "\1B0d9"; }
+    [data-hex="da"]:before { content: "\1B0da"; }
+    [data-hex="db"]:before { content: "\1B0db"; }
+    [data-hex="dc"]:before { content: "\1B0dc"; }
+    [data-hex="dd"]:before { content: "\1B0dd"; }
+    [data-hex="de"]:before { content: "\1B0de"; }
+    [data-hex="df"]:before { content: "\1B0df"; }
+    [data-hex="e0"]:before { content: "\1B0e0"; }
+    [data-hex="e1"]:before { content: "\1B0e1"; }
+    [data-hex="e2"]:before { content: "\1B0e2"; }
+    [data-hex="e3"]:before { content: "\1B0e3"; }
+    [data-hex="e4"]:before { content: "\1B0e4"; }
+    [data-hex="e5"]:before { content: "\1B0e5"; }
+    [data-hex="e6"]:before { content: "\1B0e6"; }
+    [data-hex="e7"]:before { content: "\1B0e7"; }
+    [data-hex="e8"]:before { content: "\1B0e8"; }
+    [data-hex="e9"]:before { content: "\1B0e9"; }
+    [data-hex="ea"]:before { content: "\1B0ea"; }
+    [data-hex="eb"]:before { content: "\1B0eb"; }
+    [data-hex="ec"]:before { content: "\1B0ec"; }
+    [data-hex="ed"]:before { content: "\1B0ed"; }
+    [data-hex="ee"]:before { content: "\1B0ee"; }
+    [data-hex="ef"]:before { content: "\1B0ef"; }
+    [data-hex="f0"]:before { content: "\1B0f0"; }
+    [data-hex="f1"]:before { content: "\1B0f1"; }
+    [data-hex="f2"]:before { content: "\1B0f2"; }
+    [data-hex="f3"]:before { content: "\1B0f3"; }
+    [data-hex="f4"]:before { content: "\1B0f4"; }
+    [data-hex="f5"]:before { content: "\1B0f5"; }
+    [data-hex="f6"]:before { content: "\1B0f6"; }
+    [data-hex="f7"]:before { content: "\1B0f7"; }
+    [data-hex="f8"]:before { content: "\1B0f8"; }
+    [data-hex="f9"]:before { content: "\1B0f9"; }
+    [data-hex="fa"]:before { content: "\1B0fa"; }
+    [data-hex="fb"]:before { content: "\1B0fb"; }
+    [data-hex="fc"]:before { content: "\1B0fc"; }
+    [data-hex="fd"]:before { content: "\1B0fd"; }
+    [data-hex="fe"]:before { content: "\1B0fe"; }
+    [data-hex="ff"]:before { content: "\1B0ff"; }
+  </style>
+  <style>
+    @font-face {
+      font-family: Nakamoto;
+      src: url('BabelStoneHanKana.woff') format('woff');
+    }
+    body {
+      background-color: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    div.block {
+      width: 500px;
+      height: 500px;
+      display: flex;
+      flex-flow: column wrap;
+      gap: 0;
+      background: #13161f;
+      direction: rtl;
+    }
+    div.item {
+      width: 62.5px;
+      height: 62.5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Nakamoto;
+      font-size: 40px;
+    }
+    span.glyph {
+      color: #F7931A;
+    }
+    @media (max-width: 500px) and (orientation: portrait) {
+      div.block {
+        width: 100vw;
+        height: 100vw;
+      }
+      div.item {
+        width: 12.5vw;
+        height: 12.5vw;
+        font-size: 8vw;
+      }
+    }
+    @media (max-height: 500px) and (orientation: landscape){
+      div.block {
+        width: 100vh;
+        height: 100vh;
+      }
+      div.item {
+        width: 12.5vh;
+        height: 12.5vh;
+        font-size: 8vh;
+      }
+    }
+  </style>
+  <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <script>
+    function setup() {
+      return {
+        blockhash: '',
+        size: 500,
+        get glyphs() {
+          return this.blockhash.split('').map((item, index) => {
+            var v
+            if (index == this.blockhash.length - 1) {
+              v = this.blockhash[index] + this.blockhash[0]
+            } else {
+              v = this.blockhash.slice(index, index + 2)
+            }
+            return {
+              hex: v,
+              hue: this.computeHue(v),
+              delay: this.computeDelay(v),
+            }
+          })
+        },
+        computeHue(hex) {
+          return (1 - parseInt(hex, 16) / parseInt('100', 16)) * 360
+        },
+        computeDelay(hex) {
+          return (1 - parseInt(hex, 16) / parseInt('100', 16)) * 1000
+        },
+        async update() {
+          this.blockhash = '00000000000000000000a015a7264c85bd6aafb65c753af77d7fe11c0a94daeb'
+        },
+        async init() {
+          this.blockhash = '000000000000000000019be4a382d8b5e46ae0a7100aed7f11b4d2d15cd7502b'
+          window.setInterval(this.update.bind(this), 1000)
+        }
+      }
+    }
+  </script>
+</head>
+<body x-data="setup()">
+  <div class="block" x-init="await init()" :style="`width: ${size}; height: ${size};`">
+    <template x-for="(glyph, index) in glyphs" :key="index">
+      <div class="item">
+        <span class="glyph" :data-hex="glyph.hex"></span>
+      </div>
+    </template>
+  </div>
+</body>
+</html>
