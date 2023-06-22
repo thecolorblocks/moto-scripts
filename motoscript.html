@@ -10,8 +10,65 @@
       font-family: Nakamoto;
       src: url('BabelStoneHanKana.woff') format('woff');
     }
+    body {
+      background-color: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    div.block {
+      width: 500px;
+      height: 500px;
+      display: flex;
+      flex-flow: column wrap;
+      gap: 0;
+      /*background: #13161f;*/
+      background: #000;
+      direction: rtl;
+    }
+    div.item {
+      width: 62.5px;
+      height: 62.5px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Nakamoto;
+      font-size: 40px;
+      -webkit-background-clip: text;
+      background-clip: text;
+      background-image: url('https://ordinals.com/content/e9d3eb5b3ac62590a2c871c650fce9b176906a129c9b9dc3aa1794fefc237ccfi0');
+      color: transparent;
+    }
+    span.glyph {
+      /*color: #F7931A;*/
+    }
+    @media (max-width: 500px) and (orientation: portrait) {
+      div.block {
+        width: 100vw;
+        height: 100vw;
+      }
+      div.item {
+        width: 12.5vw;
+        height: 12.5vw;
+        font-size: 8vw;
+      }
+    }
+    @media (max-height: 500px) and (orientation: landscape){
+      div.block {
+        width: 100vh;
+        height: 100vh;
+      }
+      div.item {
+        width: 12.5vh;
+        height: 12.5vh;
+        font-size: 8vh;
+      }
+    }
   </style>
   <script src="cell.js"></script>
+  <script src="popmotion.js"></script>
   <script>
     var neuralNet = {
       net: new Comment('neural-net'),
@@ -24,30 +81,16 @@
         this.net.addEventListener(channel, compute)
       }
     }
-
-    function animate({draw, delay}) {
-      const start = performance.now() + delay;
-      const duration = 1000
-      const timing = function(t){
-        return t < 0.5 ? 0.5 * Math.pow(2 * t, 2) : 0.5 * (2 - Math.pow(2 * (1 - t), 2))
-      }
-      requestAnimationFrame(function animate(time) {
-        let timeFraction = (time - start) / duration
-        if (timeFraction > 1) timeFraction = 1
-        let progress = timing(timeFraction)
-        draw(progress)
-        if (timeFraction < 1) requestAnimationFrame(animate)
-      })
-    }
   </script>
   <script>
+    var toggle = true
     var hueRange = 360
     var baseDelay = 1000
     var computeFraction = function(hex){
       return (1 - parseInt(hex, 16) / parseInt('100', 16))
     }
     var deriveScript = function(blockhash, index){
-      var hex = blockhash.slice(index, index + 2)
+      var hex = (index !== blockhash.length - 1) ? blockhash.slice(index, index + 2) : blockhash[index] + blockhash[0]
       var hue = computeFraction(hex) * hueRange
       var delay = computeFraction(hex) * baseDelay
       return {
@@ -56,48 +99,66 @@
         delay: delay
       }
     }
-    var motoscript = {
+    var mutate = function(cell, hex, delay){
+      popmotion.animate({
+        from: 0,
+        to: 1,
+        duration: 1000,
+        elapsed: -delay,
+        onPlay: function(){
+          cell.parentElement.style.opacity = 0
+          cell.dataset.hex = hex
+        },
+        onUpdate: function(frame){
+          cell.parentElement.style.opacity = frame
+        },
+      })
+    }
+    var clone = function(original){
+      var copy = Object.create(original)
+      return copy
+    }
+    var indices = Array.from({length: 64}, function(_, i){ return i++ })
+    var motoscripts = {
       $cell: true,
       $type: 'div',
       class: 'block',
       _blockhash: '',
       _fetch: function(){
-        this._blockhash = '49998fa1363233eedf10464624de4fe0328918914c2131c30d6d9d7bb30d22d8'
+        if (toggle) this._blockhash = '000000000000000000019be4a382d8b5e46ae0a7100aed7f11b4d2d15cd7502b'
+        if (!toggle) this._blockhash = '000000000000000000019be4a382d8b5e46ae0a7100aed7f11b4d2d15cd7502b'
+        toggle = !toggle
       },
       $init: function(e) {
-        this._blockhash = '000000000000000000019be4a382d8b5e46ae0a7100aed7f11b4d2d15cd7502b'
-        window.setInterval(this._fetch.bind(this), 1000)
+        // Produce cells
+        window.indices.forEach(function(i){
+          this.$components.push({
+            $type: 'div',
+            class: 'item',
+            $components: [{
+              $type: 'span',
+              class: 'glyph',
+              _index: i,
+              $init: function(){
+                window.neuralNet.pull('blockhash', function(electron){
+                  var scriptMetadata = window.deriveScript(electron.detail.blockhash, this._index)
+                  if (scriptMetadata.hex !== this.dataset.hex) {
+                    window.mutate(this, scriptMetadata.hex, scriptMetadata.delay)
+                  }
+                }.bind(this))
+              }
+            }]
+          })
+        }.bind(this))
+        window.setInterval(this._fetch.bind(this), 2000)
       },
       $update: function(e){
         // Push message through neural net
-        neuralNet.push('blockhash', {
+        window.neuralNet.push('blockhash', {
           blockhash: this._blockhash
         })
       },
-      $components: [
-        {
-          $type: 'div',
-          class: 'item',
-          $components: [
-            {
-              $type: 'span',
-              class: 'glyph',
-              _index: 0,
-              $init: function(e){
-                neuralNet.pull('blockhash', function(event){
-                  var scriptMetadata = deriveScript(event.detail.blockhash, this._index)
-                  animate({
-                    draw: function(progress){
-                      this.style.opacity = (1 - progress) * 1
-                    }.bind(this),
-                    delay: scriptMetadata.delay
-                  })
-                }.bind(this))
-              }
-            }
-          ]
-        }
-      ]
+      $components: []
     }
   </script>
 </head>
