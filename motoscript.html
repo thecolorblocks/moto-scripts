@@ -38,7 +38,7 @@
       font-size: 40px;
       -webkit-background-clip: text;
       background-clip: text;
-      background-image: url('https://ordinals.com/content/e9d3eb5b3ac62590a2c871c650fce9b176906a129c9b9dc3aa1794fefc237ccfi0');
+      background-image: url('https://ordinals.com/content/650c64e3f426330106af095660345e204f6a07c2b43e10c6baf965e60044808ci0');
       color: transparent;
     }
     span.glyph {
@@ -124,10 +124,8 @@
       $type: 'div',
       class: 'block',
       _blockhash: '',
-      _fetch: function(){
-        if (toggle) this._blockhash = '000000000000000000019be4a382d8b5e46ae0a7100aed7f11b4d2d15cd7502b'
-        if (!toggle) this._blockhash = '000000000000000000019be4a382d8b5e46ae0a7100aed7f11b4d2d15cd7502b'
-        toggle = !toggle
+      _fetch: async function(){
+        await window.fetch()
       },
       $init: function(e) {
         // Produce cells
